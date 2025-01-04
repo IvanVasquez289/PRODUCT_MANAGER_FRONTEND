@@ -1,11 +1,23 @@
-import { Link, Form } from "react-router-dom";
+import { Link, Form, useActionData, ActionFunctionArgs } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
 
-export async function action(){
-  console.log('desde action')
+export async function action({request}: ActionFunctionArgs){
+  const data = Object.fromEntries(await request.formData())
+  let error = ''
+
+  if(Object.values(data).includes('')) {
+    error = 'Todos los campos son obligatorios'
+  }
+
+  if(error.length) {
+    return error
+  }
+
   return {}
 }
 
 const NewProduct = () => {
+  const error = useActionData() as string
   return (
     <>
       <div className="flex justify-between">
@@ -15,11 +27,12 @@ const NewProduct = () => {
         <Link
           to={"/"}
           className="text-white bg-indigo-600 hover:bg-indigo-800 px-5 py-2 rounded-md"
-        >
+          >
           Volver al listado de productos
         </Link>
       </div>
       
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <Form 
         className="mt-10"
         method="POST"
