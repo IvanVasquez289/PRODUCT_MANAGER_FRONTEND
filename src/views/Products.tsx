@@ -9,7 +9,6 @@ export const loader = async () => {
 }
 const Products = () => {
   const products: Product[] = useLoaderData()
-  console.log(products)
   return (
     <>
       <div className="flex justify-between"> 

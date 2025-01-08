@@ -14,3 +14,4 @@ export const ProductSchema = object({
 
 export const ProductsSchema = array(ProductSchema)
 export type Product = InferOutput<typeof ProductSchema>
+export type DraftProduct = InferOutput<typeof DraftProductSchema>
