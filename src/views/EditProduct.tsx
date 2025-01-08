@@ -85,7 +85,7 @@ const EditProduct = () => {
         <input
           type="submit"
           className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
-          value="Registrar Producto"
+          value="Actualizar Producto"
         />
       </Form>
     </>
